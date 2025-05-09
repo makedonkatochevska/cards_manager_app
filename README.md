@@ -16,17 +16,18 @@
 
 ## Project Description 📜
 
-The **Movie Application** is a dynamic web-based app developed to practice and apply JavaScript skills learned during the course. Users can add their favorite movies, manage them by editing or deleting, and build a personalized list of favorite titles. The application includes a fully interactive interface using modals, dynamic rendering, and routing.
+This **Cards Manager Application** is built to demonstrate mastery of JavaScript DOM manipulation, event handling, and working with arrays. The app displays product cards dynamically using data from an existing `products.js` file and allows users to manage (add, delete, search) these cards directly from the browser interface.
 
 ### Key Features:
 
-- Add a new movie by entering details like **title**, **director**, **release year**, **summary**, **category**, and **rating** in a modal form.
-- View all added movies on the **Home** page with movie cards generated dynamically.
-- **Edit or delete** movies by interacting with each movie card. Clicking **Edit** opens a pre-filled modal where changes can be made and saved.
-- Mark movies as **favorites** by clicking a favorite icon, then view all marked titles on a separate **Favorites** page accessible via the navigation bar.
-- Use the **search bar** on the Home page to filter movies by title.
+- Dynamically render cards from an array of product objects.
+- Add a new card using a modal input form.
+- Delete existing cards, which also updates the underlying array.
+- Search cards by title using a dedicated search input and button.
+- Keep card IDs consistent after deletion to avoid duplication issues.
+- All card rendering is handled by a reusable `renderCard()` function.
 
-All features aim to simulate a real-world movie management system while focusing on object handling, event delegation, and DOM manipulation with JavaScript.
+This exercise focuses on **JavaScript fundamentals** like loops, DOM manipulation, modals, forms, arrays, and event listeners.
 
 ---
 
@@ -57,7 +58,7 @@ To run these exercises locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/makedonkatochevska/movie_list_app_crud.git .
+   git clone https://github.com/makedonkatochevska/cards_manager_app.git .
    ```
 2. Open the index.html file into the browser of choice.
 
@@ -65,41 +66,46 @@ To run these exercises locally, follow these steps:
 
 ## Usage 🚀
 
-1. **Add a Movie**
+### Managing Cards in the Application
 
-   - Click the **Add Movie** button to open a modal form.
-   - Enter the **Title**, **Director**, **Year of Release**, **Short Summary**, **Category**, **Rating**, and any other desired fields.
-   - Submit the form to add the movie to the Home page list.
+#### 1. Display Initial Cards
 
-2. **Edit or Delete a Movie**
+- On page load, the app loops through the `products` array from `products.js`.
+- For each item, it dynamically renders a card into the `div` with `id="list"` using the `renderCard()` function.
 
-   - Each movie card on the Home page includes **Edit** and **Delete** options.
-   - Clicking **Edit** opens a modal pre-filled with the movie's current details. Make your changes and save.
-   - Click **Delete** to remove the movie after confirming the action.
+#### 2. Add a New Card
 
-3. **Mark as Favorite**
+- Click the **"+"** button to open the Bootstrap modal form.
+- Fill out all input fields (title, description, etc.).
+- Click the **"Add"** button:
+  - The new card is added to the DOM inside `#list`.
+  - Input values are cleared.
+  - An object is created and pushed into the `products` array with a new ID based on `products.length`.
 
-   - Click the **Add to Favorite** icon on any movie card to add it to your favorites.
-   - The movie will be stored and displayed on the Favorites page.
+#### 3. Delete a Card
 
-4. **View Favorites**
+- Click the **"Delete"** button on any card.
+- The card is removed from the HTML and also from the `products` array.
+- After deletion, the app reindexes all card IDs to prevent ID conflicts when adding new cards.
 
-   - Use the **Favorites** link in the navigation bar to view all movies marked as favorites.
-   - Movies can also be removed from this list by clicking the Favorite icon again.
+#### 4. Search Cards
 
-5. **Search Movies**
+- Enter a title in the search input field and click the **"Search"** button.
+- Cards that match the title will be displayed; all others will be hidden.
 
-   - On the Home page, use the **search bar** to find movies by title.
-   - The results update in real-time as you type.
+#### 5. Reuse the Render Function
 
-6. **Persistent Data**
-   - All movie data is stored in **localStorage**, so your added, edited, and favorite movies remain intact even after refreshing or closing the browser.
+- The same `renderCard()` function is used throughout:
+  - When displaying the initial cards
+  - After adding a new card
+  - After deleting a card
+  - When rendering filtered search results
 
 ---
 
 ## Credits 📝
 
-This project was developed during a JavaScript workshop to reinforce knowledge in DOM manipulation, event handling, dynamic UI rendering, object management, and routing concepts.
+This project was created as part of a JavaScript DOM and logic practice challenge. The starter files were provided with predefined product data, and the core logic was built using vanilla JavaScript, Bootstrap for modals, and DOM-based events.
 
 ---
 
