@@ -46,7 +46,7 @@ This exercise focuses on **JavaScript fundamentals** like loops, DOM manipulatio
 
 You can try out the Age Calculator by visiting the live demo link below:
 
-- [Live Demo - Movie Application](https://movie-list-crud-makedonkatochevska.netlify.app/)
+- [Live Demo](https://cards-manager-app-makedonkat.netlify.app/)
 
 ---
 
